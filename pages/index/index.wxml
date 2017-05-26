@@ -1,10 +1,23 @@
 <!--index.wxml-->
-<view class="container">
-  <view  bindtap="bindViewTap" class="userinfo">
-    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
+<view class="container" disable-scroll="true">
+    <view class="info-list" disable-scroll="true"
+          data-i="{{tt}}"
+          bindtouchstart="touchStart"
+          bindtouchmove="touchMove"
+          bindtouchend="touchEnd"
+          bindtouchcancel="touchCancel"
+    >
+        <view class="info-list-item {{(idx===showIndex)?'show':''}}" disable-scroll="true"
+              wx:for="{{t1}}"
+              wx:key="{{item.key}}"
+              wx:for-index="idx">
+            {{item.content.headerText}}:{{item.content.footerText}} {{idx}}
+        </view>
+
+
+    </view>
+
+
+    <view class="more" bindtap="toMore" disable-scroll="true">+</view>
+
 </view>
